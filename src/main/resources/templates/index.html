@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="_fragments::head(~{::title})">
+        <meta charset="UTF-8">
+        <title>首页</title>
+    </head>
+    <body>
+        <!--导航栏-->
+        <nav id="nav" class="gird-header" style="display: none">
+            <div class="ui container">
+                <div class="ui inverted secondary stackable menu">
+                    <h2 class="ui olive header item">Blog</h2>
+                    <!--<div class="right m-item item m-mobile-hide">-->
+                    <a href="#" th:href="@{/}" class="active m-item item"><i class="home icon"></i>首页</a>
+                    <a href="#" th:href="@{/types/-1}" class="m-item item"><i class="clone outline icon"></i>分类</a>
+                    <a href="#" th:href="@{/archives}" class="m-item item"><i class="clock icon"></i>时间轴</a>
+                    <!--<a href="#" th:href="@{/music}" class="m-item item"><i class="music icon"></i>音乐盒</a>-->
+                    <a href="#" th:href="@{/message}" class="m-item item"><i class="book icon"></i>留言板</a>
+                    <a href="#" th:href="@{/friends}" class="m-item item"><i class="pencil alternate icon"></i>友人帐</a>
+                    <a href="#" th:href="@{/picture}" class="olive m-item item"><i class="image icon"></i>照片墙</a>
+                    <a href="#" th:href="@{/about}" class="m-item item"><i class="info icon"></i>关于我</a>
+                    <!--</div>-->
+                    <div class="right m-item item">
+                        <form name="search" action="#" th:action="@{/search}" method="post" target="_blank">
+                            <div class="ui icon transparent input m-margin-tb-tiny" style="color: white">
+                                <input style="color: white" type="text" name="query" placeholder="Search...."
+                                       th:value="${query}">
+                                <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-hide" style="display: none">
+                <i class="sidebar icon"></i>
+            </a>
+        </nav>
+
+        <!--顶部图片-->
+        <div class="m-bg-class_outer" style="width: 100%;height: 70%">
+            <img src="../static/images/blog_bg_02.png" th:src="@{/images/blog_bg_02.png}" alt="" class="ui m-bg image"
+                 style="width: 100%;height: 100%">
+            <div class="m-bg-class_cover" align="center">
+                <div class="m-margin-top-maxx" align="center">
+                    <img class="ui circular image" align="center" src="../static/images/avatar.png"
+                         th:src="@{/images/avatar.png}" style="width: 150px;height: 150px;">
+                </div>
+                <div class="m-font-size-title-mediul" align="center">GodNight</div>
+
+                <div class="" align="center">
+                    <a href="#" class="ui tencent circular icon button"><i class="user icon"></i></a>
+                    <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="1927440193"
+                       data-position="bottom center"><i class="qq icon"></i></a>
+                    <a href="https://github.com/1927440193/" target="_blank" class="ui github circular icon button"
+                       data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon"></i></a>
+                    <a href="https://blog.csdn.net/qq_40348390" target="_blank" class="ui csdn circular icon button"
+                       data-content="点击跳转CSDN" data-position="bottom center"><i class="copyright outline icon"></i></a>
+                    <a href="#" class="ui email circular icon button" data-content="1927440193@qq.com"
+                       data-position="bottom center"><i class="envelope  icon"></i></a>
+                </div>
+
+                <div class="ui tencent-qr flowing popup transition hidden">
+                    <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                         class="ui rounded image" style="width: 110px">
+                    <div align="center">微信公众号</div>
+                </div>
+                <div class="ui wechat-qr flowing popup transition hidden">
+                    <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                         class="ui rounded image" style="width: 110px">
+                    <div align="center">微信</div>
+                </div>
+                <div class="ui qq-qr flowing popup transition hidden">
+                    <img src="../static/images/QQ.jpg" th:src="@{/images/QQ.jpg}" alt="" class="ui rounded image"
+                         style="width: 110px">
+                    <div align="center">QQ</div>
+                </div>
+
+                <div class="m-font-size-text" align="center">欢迎来到我的博客,</div>
+                <hr style="width: 40%">
+                <h5 class="m-font-size-text-init-title m-margin-top-large">风乍起，吹皱一池春水。</h5>
+                <h5 class="m-font-size-text-init-title">闲引鸳鸯香径里，手挼红杏蕊。</h5>
+                <h5 class="m-font-size-text-init-title">斗鸭阑干独倚，碧玉搔头斜坠。</h5>
+                <h5 class="m-font-size-text-init-title"> 终日望君君不至，举头闻鹊喜。</h5>
+                <div id="waypoint" class="ui m-margin-top-large" align="center">
+                    <a href="#" th:href="@{/}"
+                       class="ui active circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn"><i
+                            class="home icon"></i>首页</a>
+                    <a href="#" th:href="@{/types/-1}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn"><i
+                            class="clone outline icon"></i>分类</a>
+                    <a href="#" th:href="@{/archives}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i
+                            class="clock icon"></i>时间轴</a>
+                    <!--<a href="#" th:href="@{/music}"-->
+                    <!--   class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i-->
+                    <!--        class="music icon"></i>音乐盒</a>-->
+                    <a href="#" th:href="@{/message}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i
+                            class="book icon"></i>留言板</a>
+                    <a href="#" th:href="@{/friends}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i
+                            class="pencil alternate icon"></i>友人帐</a>
+                    <a href="#" th:href="@{/picture}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i
+                            class="image icon"></i>照片墙</a>
+                    <a href="#" th:href="@{/about}"
+                       class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i
+                            class="info icon"></i>关于我</a>
+                </div>
+                <div class="hiddenDiv"></div>
+            </div>
+
+        </div>
+
+        <!--最新推荐,发布博客时选中推荐标签的博客中时间最靠后的几个-->
+        <div class="ui m-padded-tb-large attached">
+            <div class="ui m-container-small m-opacity">
+                <div class="ui secondary segment " align="center">
+                    <i class="bookmark icon"></i>最新推荐
+                </div>
+            </div>
+            <div class="ui stackable m-container-mini m-opacity grid">
+                <div class="m-margin-tb-tiny four wide column" th:each="blog : ${recommendedBlogs}">
+                    <a href="#" class="class_outer" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                        <img src="../static/images/bg.jpg" th:src="@{${blog.firstPicture}}" alt=""
+                             class="ui rounded image" style="width: 300px;height: 180px">
+                        <span class="class_cover " style="width: 300px !important;">
+                     <h4 class="m-font-size-blog-text m-margin-tb-tiny" th:text="${blog.title}" style="width: 300px !important;">blog标题</h4>
+                  </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--主体内容-->
+        <div class="ui m-padded-tb-large attached animated fadeIn">
+            <div class="ui m-container-small">
+                <div class="ui stackable grid" align="center">
+                    <!--博客内容-->
+                    <div class="ui vertical segment"  style="width: max-content">
+                        <div class="ui m-container-small m-opacity">
+                            <div class="ui secondary segment">
+                                <i class="bookmark icon"></i>最新文章
+                            </div>
+                        </div>
+                        <!--博文列表-->
+                        <div class="ui padded segment m-padded-tb-large m-opacity" th:each="blog : ${pageInfo.list}">
+                            <div class="ui large aligned mobile reversed stackable grid">
+                                <!--博文信息-->
+                                <div class="eleven wide column ">
+                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"
+                                                             target="_blank" class="m-black m-title-font"
+                                                             th:text="${blog.title}">Blog标题</a></h3>
+                                    <p class="m-text m-margin-top-max" th:text="|${blog.description}......|">
+                                        刚学编程的时候，都是在service里直接调用dao，service里面就new一个dao类对象调用，其他有意义的事没做，也不明白有这个有什么用，参加工作久了以后就会知道，业务才是工作中的重中之重.
+                                        我们都知道，标准主流现在的编程方式都是采用MVC综合设计模式，MVC本身不属于设计模式的一种，它描述的是一种结构，最终目的达到解耦，解耦说的意思是你更改某一层代码，
+                                        不会影响我其他层代码，如果你会像spring这样的框架，你会了解面向接口编程，表示层调用控制层，控制层调用业务层，业务层调用数据访问层。......</p>
+                                    <div class="ui m-margin-top-max grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <!--头像-->
+                                                    <img src="../static/images/me.jpg" th:src="@{${blog.avatar}}" alt=""
+                                                         class="ui avatar image">
+                                                    <!--昵称-->
+                                                    <div class="content"><a href="#" th:href="@{/about}" target="_blank"
+                                                                            class="header" th:text="${blog.nickname}">oneStar</a>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <!--更新时间-->
+                                                    <i class="calendar icon"></i><span
+                                                        th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>
+                                                </div>
+                                                <div class="item">
+                                                    <!--浏览量-->
+                                                    <i class="eye icon"></i> <span th:text="${blog.views}">2222</span>
+                                                </div>
+                                                <div class="item">
+                                                    <!--评论数-->
+                                                    <i class="comment outline icon"></i> <span
+                                                        th:text="${blog.commentCount}">2222</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <!--分类-->
+                                            <a href="#" target="_blank"
+                                               class="ui teal basic label m-padded-tiny m-text-thin"
+                                               th:text="${blog.typeName}">Java</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--博文图片-->
+                                <div class="five wide column">
+                                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                            <img src="../static/images/bg.png" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image" style="height: 140px;width: max-content">
+                                        </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--分页-->
+                    <div class="ui bottom attached segment m-opacity stackable grid">
+                        <div class="three wide column" align="center">
+                            <a class="item" th:href="@{/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"
+                               th:unless="${pageInfo.isFirstPage}">上一页</a>
+                        </div>
+
+                        <div class="ten wide column" align="center">
+                            <p><span th:text="${pageInfo.pageNum}"></span> / <span th:text="${pageInfo.pages}"></span>
+                            </p>
+                        </div>
+
+                        <div class="three wide column" align="center">
+                            <a class="item"
+                               th:href="@{/(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"
+                               th:unless="${pageInfo.isLastPage}">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--置顶图标-->
+        <div id="toolbar" class="m-padded-tb-large m-fixed m-right-bottom" style="display: none">
+            <a href="#" class="ui teal icon button"><i class="chevron up icon"></i></a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!--页脚-->
+        <footer th:replace="_fragments::footer"></footer>
+
+
+        <!--script-->
+        <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+
+        <!--/*/</th:block>/*/-->
+
+        <script>
+            // 运行时间统计
+            function secondToDate(second) {
+                if (!second) {
+                    return 0;
+                }
+                var time = new Array(0, 0, 0, 0, 0);
+                if (second >= 365 * 24 * 3600) {
+                    time[0] = parseInt(second / (365 * 24 * 3600));
+                    second %= 365 * 24 * 3600;
+                }
+                if (second >= 24 * 3600) {
+                    time[1] = parseInt(second / (24 * 3600));
+                    second %= 24 * 3600;
+                }
+                if (second >= 3600) {
+                    time[2] = parseInt(second / 3600);
+                    second %= 3600;
+                }
+                if (second >= 60) {
+                    time[3] = parseInt(second / 60);
+                    second %= 60;
+                }
+                if (second > 0) {
+                    time[4] = second;
+                }
+                return time;
+            }
+
+            function setTime() {
+                /*此处为网站的创建时间*/
+                var create_time = Math.round(new Date(Date.UTC(2020, 03, 25, 15, 15, 15)).getTime() / 1000);
+                var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+                currentTime = secondToDate((timestamp - create_time));
+                currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
+                    + currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4]
+                    + '秒';
+                document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+            }
+
+            setInterval(setTime, 1000);
+
+
+            var waypoint = new Waypoint({
+                element: document.getElementById('waypoint'),
+                handler: function (direction) {
+                    if (direction == 'down') {
+                        $('#toolbar').show(100);
+                    } else {
+                        $('#toolbar').hide(100);
+                    }
+                    console.log('Scrolled to waypoint!  ' + direction);
+                }
+            });
+
+            $('#toolbar').click(function () {
+                $(window).scrollTo(0, 500);
+            });
+
+
+            $('.menu.toggle').click(function () {
+                $('.m-item').toggleClass('m-mobile-show');
+
+            });
+
+            // 显示公众号
+            $('.tencent').popup({
+                popup: $('.tencent-qr'),
+                position: 'bottom center'
+            });
+
+            // 显示微信
+            $('.wechat').popup({
+                popup: $('.wechat-qr'),
+                position: 'bottom center'
+            });
+
+            // 显示QQ
+            $('.qq').popup({
+                popup: $('.qq-qr'),
+                position: 'bottom center'
+            });
+
+            // 显示邮箱
+            $('.email').popup();
+
+            // 显示CSDN
+            $('.csdn').popup();
+
+            // 显示github
+            $('.github').popup();
+
+            // 导航栏显示
+            var waypoint = new Waypoint({
+                element: document.getElementById('waypoint'),
+                handler: function (direction) {
+                    if (direction == 'down') {
+                        $('#nav').show(500);
+                    } else {
+                        $('#nav').hide(500);
+                    }
+                    console.log('Scrolled to waypoint!  ' + direction);
+                }
+            });
+        </script>
+
+    </body>
+</html>

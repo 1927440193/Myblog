@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+  freemarker:
+    check-template-location: false
+logging:
+  level:
+    root: warn
+    com.star: info
+  file:
+    name: log/blog-pro.log
+
+mybatis:
+  #路径下类设置默认别名
+  type-aliases-package: com.hu.pojo
+  #本地mapper路径，自动装载mapper下的xml文件
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #开启驼峰名称映射 type_Id 自动与typeId映射
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
+
